@@ -66,6 +66,7 @@ The AWS Management Console is incredibly useful and we will continue to use it t
 10. Instead of creating a test event, we can invoke our function with a payload direction and view a small snippet of the log.
     ```sh
     aws lambda invoke --function-name {FUNCTION_NAME eg. student00-lab2} --log-type Tail \
+    --cli-binary-format raw-in-base64-out \
     --payload '{"key1":"value1", "key2":"value2", "key3":"value3"}' \
     outputfile.txt
     ```
