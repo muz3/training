@@ -27,7 +27,7 @@ We are going upload a new version of our comments function, create an alias for 
         ```
 
 2. Create an `API Gateway` for our `studentID-comments-get` function
-    - You can create an `API Gateway` via the CLI, but it is a long drawn out process that we will simply be using the SAM/Serverless frameworks for tomorrow. For simple services and applications, using the UI works well. Create an `API Gateway` for your `studentID-comments-get` function similar to what you did in lab 1.3 when setting up the initial webhook.
+    - You can create an `API Gateway` via the CLI, but it is a long drawn out process that we will simply be using the SAM/Serverless frameworks for tomorrow. For simple services and applications, using the UI works well. Create an `API Gateway` for your `studentID-comments-get` function similar to what you did in lab 1.3 when setting up the initial webhook but select **REST** instead of **HTTP** this time.
     - *Remember the API Endpoint, you will need it later*
   
 3. Now we need to create the alias
