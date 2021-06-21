@@ -6,7 +6,7 @@ For all of the labs in this section, you will need an AWS account and a GitHub a
   
 These labs can work on a Windows system, especially if using a Linux-style terminal emulator. However, all examples are based on an Ubuntu LTS Linux system using Bash. OSX should work fine, but you may need to make minor modifications to some of the examples for them to work as expected.  
 
-Many examples use the AWS CLI. Instructions for installing this for your specific system can be found here: [https://docs.amazonaws.cn/en_us/cli/latest/userguide/cli-chap-install.html](https://docs.amazonaws.cn/en_us/cli/latest/userguide/cli-chap-install.html)
+Many examples use the AWS CLI. Instructions for installing this for your specific system can be found here: [https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 We will largely focus on using the CLI, as it is less likely to have significant changes between versions. The UI often has small changes that are expected to be easier or simpler for the user to navigate, but will make any examples out of date. If anything in this course is out of date, please let your instructor know, or open an issue on GitHub against this repo with as much detail as possible. _(Pull requests very welcome)._
 
