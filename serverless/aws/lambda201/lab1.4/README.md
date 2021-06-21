@@ -148,7 +148,7 @@ Now that we are getting into more advanced usage, the structure of our `sources`
     In the `lambda` folder, run:
 
     ```sh
-    rm function.zip && zip -r function.zip .
+    rm function.zip; zip -r function.zip .
     ```
 
     And update your function with the new code:
@@ -216,11 +216,12 @@ Layers let you add binaries and custom runtimes to your functions without having
 
 You can create layers via the command line, but you have to create them and then reference their ARN. We will use the UI, for simple layer actions it is more intuitive.
 
-5. Switch to the Layers management console.
+5. Switch to the Layers management.
     - When you go to the Lambda management console, you should see the Functions view by default.
-    - On the left hand menu is an option labeled __Layers__. Click on it.
+    - OUnder your function is a section that says **Layers(0)**, click on it and it and scroll down to see the layers.
 6. Create a layer:
-    - On the upper right hand side, click on the button labeled __Create Layer__.
+    - On the right hand side there will be an option to **Add Layer** click on that.
+    - There is a small link that mentions **create a new layer** click on that link for the layer creation UI.
     - Give your layer a unique name such as `studentID-aws-cli`, using your ID (or a name of your choosing.)
     - Provide a __Description__ for the layer you are creating.
     - Under `Code entry type` select `Upload a .zip file`.
@@ -231,9 +232,10 @@ You can create layers via the command line, but you have to create them and then
 7. Add the layers to our `studentID-github-webhook` function (using your student ID).
     - Go back to the Function editor where we originally configured our __API Gateway__.
     - Below your function name, in the middle of the page, there is a menu item that says 'Layers (0)`. Click on it.
-    - The configuration window below the function area now shoes the Layer configuration menu.
+    - The configuration window below the function area now shows the Layer configuration menu.
     - On the lower right hand corner of the page, click on the button labeled __Add Layer__.
-    - Under __Compatible Layers__, select one of the three layers you created above
+    - Under __Layer Source__ select **Custom Layers**
+    - Under __Custom Layers__, select one of the three layers you created above
     - Select the single version that is available.
     - Click __Add__.
     - Repeat this process until all three layers you created earlier are added to the function.
@@ -298,7 +300,7 @@ We will use an S3 bucket to host our blog once rendered. For our labs we will us
 
     So after you create your bucket and apply the policy it will be available at the composed URL.
 
-    _Wasn't that quicker than using the CLI?_
+    _Wasn't that quicker than using the UI?_
 
 9. Add an inline policy to your `studentID-lambda-cli-role` role from lab 1.3 to allow our functions to put content to s3.
 
@@ -337,7 +339,11 @@ We will use an S3 bucket to host our blog once rendered. For our labs we will us
 10. Update our `studentID-github-webhook` function to know what your Github secret is and where our S3 bucket is.
 
     ```sh
-    aws lambda update-function-configuration --function-name {FUNCTION_NAME - ex. student00-github-webhook} --environment "Variables={output_bucket={YOUR_BUCKET_NAME - e.g. student00-aws-hugo-1},github_secrets='{THE_SECRET_YOU_SAVED_IN_1.3'}"
+    aws lambda update-function-configuration --function-name {FUNCTION_NAME - ex. student00-github-webhook} --environment "Variables={output_bucket={YOUR_BUCKET_NAME - e.g. student00-aws-hugo-1},github_secrets='{THE_SECRET_YOU_SAVED_IN_1.3'}}"
+    ```
+    The line above is a bit tricky, it will look like this when composed 
+    ```
+    aws lambda update-function-configuration --function-name student00-github-webhook --environment "Variables={output_bucket=student00-aws-hugo-1,github_secrets='thescret'}"
     ```
 
 11. `cd` into the folder where you put your blog. We should still have un-published changes. Just make we have something to push, commit and push again.
@@ -352,4 +358,4 @@ We will use an S3 bucket to host our blog once rendered. For our labs we will us
 
 # Congratulations - you have a static site that is dynamically built on commit now.
 
-Check the CloudWatch logs to check on the execution. If all went well, check the S3 endpoint to see if your site is online in a few minutes. If you can't remember the endpoint URL, you can also look at it by going to the bucket directly, selecting properties, and then the __Static Hosting__ tab. The URL is displayed at the top.
+Check the CloudWatch logs to check on the execution. If all went well, check the S3 endpoint to see if your site is online in a few minutes. If you can't remember the endpoint URL, you can also look at it by going to the bucket directly, selecting properties, and then the __Static Hosting__ tab. The URL is displayed at the top. If for some reason __Static Hosting__ says disabled, enable it and set the index document to **index.html**
