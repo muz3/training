@@ -189,10 +189,9 @@ We will begin creating the building blocks of our static site that will be autom
     - The left hand side shows triggers that are available. Click on the `API Gateway`.
     - You will notice it says configuration is required. If you click on the `API Gateway` that is listed below your function the window area below will show you the `API Gateway` configuration section.
     - Under **Pick an existing API, or create a new one.**, select `Create a new API`.
+    - Under **API Type**, select `HTTP API`.
     - Under **Security** select `Open`, since we need a public service to be able to post to this API we are building.
     - Under **Additional Settings**, you can change the name of the API if you would like to. Otherwise, it will create a name based off of the function name. Either way is fine, and it won't change how we interact with the API in any way.
-    - After you click on **Add**, your changes aren't saved yet. You will see that the **API Gateway** shows `Unsaved changes`.
-    - Click on **Save** in the upper right hand corner of the page to save your function, including the API endpoint we have configured for it.
     - Clicking on the **API Gateway** now will show its configuration information, including an **API Endpoint** below the API name at the bottom of the screen.
     - Copy the `API Endpoint` value, we will need it for our Github webhook.
     - By default configuring an API Gateway in this manner, we have set up a `Lambda Proxy`, meaning that all request types are passed through to the Lambda function. This is the easiest way to get started with a function, and will work for almost all RESTful functions. If you want to call different functions based on different HTTP verbs, you can do that, or you can handle that logic in your function.
@@ -226,5 +225,6 @@ We will begin creating the building blocks of our static site that will be autom
     - Click on the latest stream.
     - You can expand the individual lines, you should see a line that outputs the `event` containing our webhook post information. This can be a bit hard to read but there are many applications and methods for formatting the output in a more readable manner.
     - It may take a few seconds for the log to show up in CloudWatch. Click the refresh icon at the top-right of the log output to refresh the view.
+    - We are expecting to get a 500 Internal Server error from the API, Github will report that the webhook failed but we will be able to see the log in Lambda showing our function was called. We are getting an error because we have not defined the environment variables for the secrets mentioned above. Right now we are only testing that we can get github to hit our function, next we will make that function usefull. 
 
 ## Congratulations! You have successfully triggered a Lambda function from a commit on the master branch of a Github repo.
