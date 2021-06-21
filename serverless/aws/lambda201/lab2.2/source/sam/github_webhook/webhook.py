@@ -215,8 +215,8 @@ def post(event, context):
         secure = False
 
         # Compute out the hash and validate the signature. If it passes set secure, otherwise throw an error
-        if 'X-Hub-Signature' in event['headers'].keys():
-            signature = event['headers']['X-Hub-Signature']
+        if 'x-hub-signature' in event['headers'].keys():
+            signature = event['headers']['x-hub-signature']
             for k in apikeys:
                 computed_hash = hmac.new(k.encode('ascii'), event['body'].encode('ascii'), hashlib.sha1)
                 computed_signature = '='.join(['sha1', computed_hash.hexdigest()])

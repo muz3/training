@@ -115,8 +115,8 @@ We will begin creating the building blocks of our static site that will be autom
         secure = False
 
 
-        if 'X-Hub-Signature' in event['headers'].keys():
-            signature = event['headers']['X-Hub-Signature']
+        if 'x-hub-signature' in event['headers'].keys():
+            signature = event['headers']['x-hub-signature']
             for k in apikeys:
                 computed_hash = hmac.new(k.encode('ascii'), event['body'].encode('ascii'), hashlib.sha1)
                 computed_signature = '='.join(['sha1', computed_hash.hexdigest()])
