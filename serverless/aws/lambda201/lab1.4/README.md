@@ -339,7 +339,11 @@ We will use an S3 bucket to host our blog once rendered. For our labs we will us
 10. Update our `studentID-github-webhook` function to know what your Github secret is and where our S3 bucket is.
 
     ```sh
-    aws lambda update-function-configuration --function-name {FUNCTION_NAME - ex. student00-github-webhook} --environment "Variables={output_bucket={YOUR_BUCKET_NAME - e.g. student00-aws-hugo-1},github_secrets='{THE_SECRET_YOU_SAVED_IN_1.3'}"
+    aws lambda update-function-configuration --function-name {FUNCTION_NAME - ex. student00-github-webhook} --environment "Variables={output_bucket={YOUR_BUCKET_NAME - e.g. student00-aws-hugo-1},github_secrets='{THE_SECRET_YOU_SAVED_IN_1.3'}}"
+    ```
+    The line above is a bit tricky, it will look like this when composed 
+    ```
+    aws lambda update-function-configuration --function-name student00-github-webhook --environment "Variables={output_bucket=student00-aws-hugo-1,github_secrets='thescret'}"
     ```
 
 11. `cd` into the folder where you put your blog. We should still have un-published changes. Just make we have something to push, commit and push again.
