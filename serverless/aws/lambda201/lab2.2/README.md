@@ -37,6 +37,7 @@
     `Build Succeeded`
 
 4. We need to package it up to s3 again. You can use the same bucket you used in lab 2.1
+    - cd in **.aws-sam/build** since SAM puts the build in folder.
     - Run the SAM Package command
     ```bash
     sam package \
