@@ -232,14 +232,8 @@ def post(event, context):
 
     # If we have an existing repo (if this function is still warm / is not a cold start)
     # we can re-use that repo on the file system and update it to save us some time and bandwidth
-    try:
-        repository_path = discover_repository(repo_path)
-        repo = Repository(repository_path)
-        logger.info('found existing repo, using that...')
-    # If a previous repo is not found we will create it
-    except Exception:
-        logger.info('creating new repo for %s in %s' % (remote_url, repo_path))
-        repo = create_repo(repo_path, remote_url)
+    logger.info('creating new repo for %s in %s' % (remote_url, repo_path))
+    repo = create_repo(repo_path, remote_url)
 
     # Re-used or created, we now have a repo reference to pull against
     pull_repo(repo, branch_name, remote_url)
