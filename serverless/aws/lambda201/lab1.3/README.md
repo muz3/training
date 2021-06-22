@@ -115,8 +115,8 @@ We will begin creating the building blocks of our static site that will be autom
         secure = False
 
 
-        if 'x-hub-signature' in event['headers'].keys():
-            signature = event['headers']['x-hub-signature']
+        if 'X-Hub-Signature' in event['headers'].keys():
+            signature = event['headers']['X-Hub-Signature']
             for k in apikeys:
                 computed_hash = hmac.new(k.encode('ascii'), event['body'].encode('ascii'), hashlib.sha1)
                 computed_signature = '='.join(['sha1', computed_hash.hexdigest()])
@@ -189,7 +189,7 @@ We will begin creating the building blocks of our static site that will be autom
     - The left hand side shows triggers that are available. Click on the `API Gateway`.
     - You will notice it says configuration is required. If you click on the `API Gateway` that is listed below your function the window area below will show you the `API Gateway` configuration section.
     - Under **Pick an existing API, or create a new one.**, select `Create a new API`.
-    - Under **API Type**, select `HTTP API`.
+    - Under **API Type**, select `REST API`.
     - Under **Security** select `Open`, since we need a public service to be able to post to this API we are building.
     - Under **Additional Settings**, you can change the name of the API if you would like to. Otherwise, it will create a name based off of the function name. Either way is fine, and it won't change how we interact with the API in any way.
     - Clicking on the **API Gateway** now will show its configuration information, including an **API Endpoint** below the API name at the bottom of the screen.
