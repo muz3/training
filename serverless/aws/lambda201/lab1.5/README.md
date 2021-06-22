@@ -231,7 +231,7 @@ We are going to add dynamic functionality to our static site using Lambda functi
 
         ```toml
         [params.lambdaComments]
-        endpoint = "http://the-url-to-our-lambda-API-Gateway"
+        endpoint = "http://the-url-to-our-lambda-API-Gateway_AND_function"
         ```
 
 5. Create our comments DynamoDB table
