@@ -31,22 +31,24 @@
         ```sh
         sam init --runtime python3.7
         ```
+        
+    - Select: 1 - AWS Quick Start Templates
+    - Select: 1 - Zip (artifact is a zip uploaded to S3)
+    - Accept the default **sam-app**
+    - Select: 1 - Hello World Example
+
         you should see something similar to
         ```sh
-        2021-01-01 09:49:12 Generating grammar tables from /usr/lib/python3.7/lib2to3/Grammar.txt
-        2021-01-01 09:49:12 Generating grammar tables from /usr/lib/python3.7/lib2to3/PatternGrammar.txt
-        [+] Initializing project structure...
+        -----------------------
+        Generating application:
+        -----------------------
+        Name: sam-app
+        Runtime: python3.7
+        Dependency Manager: pip
+        Application Template: hello-world
+        Output Directory: .
 
-        Project generated: ./sam-app
-
-        Steps you can take next within the project folder
-        ===================================================
-        [*] Invoke Function: sam local invoke HelloWorldFunction --event event.json
-        [*] Start API Gateway locally: sam local start-api
-
-        Read sam-app/README.md for further instructions
-
-        [*] Project initialization is now complete
+        Next steps can be found in the README file at ./sam-app/README.md
 
         ```
 3. Now we will package and deploy our SAM application, starting in the `sam-app` folder that was created.
@@ -56,6 +58,7 @@
         ```
 
     - Package our Lambda function and upload it to S3
+    - cd into the app name **sam-app** and then
 
         ```bash
         sam package \
@@ -92,7 +95,7 @@
     - We can query CloudFormation to get the resources it created. Specifically the endpoint for the function from the API Gateway.
     ```bash
     aws cloudformation describe-stacks \
-        --stack-name student00-sam-app \
+        --stack-name {YOUR_STACK_NAME} \
         --query 'Stacks[].Outputs[?OutputKey==`HelloWorldApi`]' \
         --output table
     ``` 
