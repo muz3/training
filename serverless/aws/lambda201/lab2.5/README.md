@@ -19,6 +19,7 @@
     - Run the deployment, everything should be prebuilt.
         -   If you get an error that it couldn't find python, you need to install python3.7 on your system.
     ```bash
+    npm install -D serverless-offline
     serverless deploy
     ```
     You should eventually get output similar to
