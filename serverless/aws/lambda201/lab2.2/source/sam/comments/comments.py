@@ -76,7 +76,7 @@ def post(event, context):
     logger.info(event)
 
     # Short circuit if this is a Firefox pre-flight OPTIONS check
-    if event['requestContext']['http']['method'] == "OPTIONS":
+    if event['httpMethod'] == "OPTIONS":
         logger.info("Allowing CORS")
         return cors_response({"message": "allowed"}, 200)
  
