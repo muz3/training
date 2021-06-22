@@ -1,4 +1,4 @@
-# Lab 2.3 - Locally test our functions and configure VS code
+# Lab 2.3 - Locally test our functions
 
 - Use AWS SAM to review logs of deployed functions and monitor deployments.
 - Use Invoke Local to run functions with custom payloads locally.
