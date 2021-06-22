@@ -17,7 +17,7 @@ Now that we have some functions and applications running in a CloudFormation sta
     - Replace the `table_name` in the `environment.json` file with your table name for both functions defined.
     - Now run
     ```bash
-    echo '{"page": "first-post"}'|sam local invoke Student00CommentsGetSAM --env-vars environment.json 
+    echo '{"page": "first-post"}'|sam local invoke Student00CommentsGetSAM --env-vars environment.json -e -
     ```
     You should see something similar to 
     ```bash
